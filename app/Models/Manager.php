@@ -16,7 +16,6 @@ class Manager extends Authenticatable
         'national_code',
         'mobile',
         'team_name',
-
     ];
 
     use HasFactory;

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('national_code');
             $table->unsignedInteger('number');
             $table->string('player_image');
+            $table->unsignedBigInteger('manager_id');
+            $table->foreign('manager_id')->references('id')->on('managers')->onDelete('no action');
             $table->string('card_image')->nullable();
             $table->timestamps();
         });

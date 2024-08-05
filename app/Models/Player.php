@@ -14,7 +14,8 @@ class Player extends Model
         'national_code',
         'number',
         'player_image',
-        'card_image'
+        'card_image',
+        'manager_id',
 
 
     ];

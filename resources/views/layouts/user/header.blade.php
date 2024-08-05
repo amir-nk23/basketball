@@ -42,10 +42,14 @@
     <!-- Select2 css -->
     <link href="{{asset('assets/plugins/select2/select2.min.css')}}" rel="stylesheet" />
 
+    {{--  font  --}}
+    <link href="{{asset('assets/font/font.css')}}" rel="stylesheet" />
+
     <!---Global-loader-->
     <div id="global-loader" >
         <img src="{{asset('assets/images/svgs/loader.svg')}}" alt="loader">
     </div>
+
 
 
 </head>

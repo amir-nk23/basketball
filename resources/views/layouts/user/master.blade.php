@@ -1,3 +1,4 @@
+
 @include('layouts.user.header')
 
 @include('sweetalert::alert')
@@ -35,16 +36,8 @@
 {{--                                    <i class="feather feather-x"></i>--}}
 {{--                                </a>--}}
 {{--                            </div>--}}
-                            <div class="mt-0">
-                                <form class="form-inline">
-                                    <div class="search-element">
-                                        <input type="search" class="form-control header-search" placeholder="Search…"
-                                               aria-label="Search" tabindex="1">
-                                        <button class="btn btn-primary-color">
-                                            <i class="feather feather-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
+                            <div class="mt-3">
+                                <h3>هیت بسکتبال گرگان</h3>
                             </div><!-- SEARCH -->
                             <div class="d-flex order-lg-2 my-auto mr-auto">
                                 <a class="nav-link my-auto icon p-0 nav-link-lg d-md-none navsearch" href="#"

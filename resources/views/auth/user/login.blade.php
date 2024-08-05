@@ -27,7 +27,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label">شماره همراه</label>
-                                        <input class="form-control" name="mobile" placeholder="شماره همراه" type="text">
+                                        <input class="form-control" value="{{old('mobile')}}" name="mobile" placeholder="شماره همراه" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">کلمه عبور</label>

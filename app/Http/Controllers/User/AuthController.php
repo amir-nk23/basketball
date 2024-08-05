@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,27 @@ class AuthController extends Controller
 
     }
 
+    public function register(Request $request)
+    {
+
+
+      $manager = Manager::query()->create([
+
+            'fullname' => $request->fullname,
+            'password'=> bcrypt($request->password),
+            'national_code'=>$request->national_code,
+            'mobile'=>$request->mobile,
+            'team_name'=>$request->team_name,
+
+        ]);
+
+      Auth::login($manager);
+
+
+       return redirect()->route('user.player.index');
+
+    }
+
 
     public function login(Request $request)
     {
@@ -34,7 +56,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('user/dashboard');
+            return redirect()->intended('user/player');
         }
 
         return back()->withErrors([
