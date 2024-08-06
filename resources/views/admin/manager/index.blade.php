@@ -132,7 +132,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" style="">ثبت بازیکن</button> <button class="btn btn-danger" data-dismiss="modal">بستن</button>
+                        <button type="submit" class="btn btn-success" style="">ثبت سپرست</button> <button class="btn btn-danger" data-dismiss="modal">بستن</button>
                     </div>
                 </form>
 
@@ -291,15 +291,13 @@
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-info" style="">ویرایش بازیکن</button> <button class="btn btn-danger" data-dismiss="modal">بستن</button>
+                                                        <button type="submit" class="btn btn-info" style="">ویرایش سرپرست</button> <button class="btn btn-danger" data-dismiss="modal">بستن</button>
                                                     </div>
                                                 </form>
 
                                             </div>
                                         </div>
                                     </div>
-
-                                    end edit modal
 
                                     <tr role="row" class="even">
                                         <td class="text-center">{{$loop->index +1}}</td>

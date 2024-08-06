@@ -19,7 +19,7 @@ class PlayerController extends Controller
     public function index()
     {
 
-        $players = Player::query()->select('id','fullname','team','national_code','number','player_image','card_image','birth_date','role_id')->get();
+        $players = Player::query()->where('manager_id',Auth::id())->select('id','fullname','team','national_code','number','player_image','card_image','birth_date','role_id')->get();
         $roles = Role::query()->get();
         $title = 'حذف بازیکن';
         $text = "ایا نسبت به حذف این بازیکن اطمینان دارید ؟";
