@@ -53,8 +53,22 @@
 
                         <div class="form-group col-6">
 
-                            <label>نام باشگاه قبلی :</label>
-                            <input class="form-control" value="{{old('exTeam')}}" name="exTeam"></input>
+                            <div class="d-flex">
+
+                                <label>تاریخ تولد :</label>
+                                <div style="color: red" class="mr-auto">*</div>
+
+                            </div>
+
+                            <input class="form-control"  value="{{old('birth_date')}}" name="birth_date"></input>
+
+                        </div>
+
+
+                        <div class="form-group col-6">
+
+                            <label>نام باشگاه :</label>
+                            <input class="form-control" value="{{old('team')}}" name="team"></input>
 
                         </div>
 
@@ -73,14 +87,34 @@
 
                         <div class="form-group col-6">
 
-
                             <div class="d-flex">
                                 <label>شماره پیراهن :</label>
                                 <div style="color: red" class="mr-auto">*</div>
                             </div>
                             <input class="form-control" value="{{old('number')}}"  name="number"></input>
+                        </div>
+
+
+                        <div class="form-group col-6">
+
+                            <div class="d-flex">
+                                <label>سمت :</label>
+                                <div style="color: red" class="mr-auto">*</div>
+                            </div>
+
+                            <select name ="role_id" class="form-control">
+
+                                @foreach($roles as $role)
+
+                                    <option value="{{$role->id}}">{{$role->name}}</option>
+
+                                @endforeach
+
+                            </select>
 
                         </div>
+
+
 
                         <div class="form-group col-6">
 
@@ -203,8 +237,22 @@
 
                                                         <div class="form-group col-6">
 
-                                                            <label>نام باشگاه قبلی :</label>
-                                                            <input class="form-control" value="{{$player->ex_team}}" name="exTeam"></input>
+                                                            <div class="d-flex">
+
+                                                                <label>تاریخ تولد :</label>
+                                                                <div style="color: red" class="mr-auto">*</div>
+
+                                                            </div>
+
+                                                            <input class="form-control"  value="{{$player->birth_date}}" name="birth_date"></input>
+
+                                                        </div>
+
+
+                                                        <div class="form-group col-6">
+
+                                                            <label>نام باشگاه :</label>
+                                                            <input class="form-control" value="{{$player->team}}" name="team"></input>
 
                                                         </div>
 
@@ -229,6 +277,27 @@
                                                                 <div style="color: red" class="mr-auto">*</div>
                                                             </div>
                                                             <input class="form-control" value="{{$player->number}}" name="number"></input>
+
+                                                        </div>
+
+
+
+                                                        <div class="form-group col-6">
+
+                                                            <div class="d-flex">
+                                                                <label>سمت :</label>
+                                                                <div style="color: red" class="mr-auto">*</div>
+                                                            </div>
+
+                                                            <select name ="role_id" class="form-control">
+
+                                                            @foreach($roles as $role)
+
+                                                                    <option value="{{$role->id}}" {{  $role->id == $player->role_id ? 'selected' : '' }}>{{$role->name}}</option>
+
+                                                                @endforeach
+
+                                                            </select>
 
                                                         </div>
 
@@ -263,7 +332,6 @@
                                     </div>
 
                                     {{--end edit modal--}}
-
 
                                     {{--  player image  --}}
 
@@ -314,7 +382,7 @@
                                         <td>
                                             {{$player->number}}
                                         </td>
-                                        <td>{{$player->ex_team}}</td>
+                                        <td>{{$player->team}}</td>
                                         <td> <a href="" data-target="#modalplayerimage" data-toggle="modal" class="action-btns1"  data-placement="top" title="" data-original-title="View Task"><i class="feather feather-eye text-primary"></i></a></td>
                                         <td> <a href="" data-target="#modalcardimage" data-toggle="modal" class="action-btns1"  data-placement="top" title="" data-original-title="View Task"><i class="feather feather-eye text-primary"></i></a></td>
                                         <td>

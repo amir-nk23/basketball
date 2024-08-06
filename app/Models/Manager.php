@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-
 class Manager extends Authenticatable
 {
 
@@ -16,7 +16,15 @@ class Manager extends Authenticatable
         'national_code',
         'mobile',
         'team_name',
+
     ];
 
     use HasFactory;
+
+    public function players(): HasMany
+    {
+
+        return $this->hasMany(Player::class);
+
+    }
 }

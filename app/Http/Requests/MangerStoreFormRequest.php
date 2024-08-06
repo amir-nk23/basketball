@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\Nationalcode;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlayerStoreFormRequest extends FormRequest
+class MangerStoreFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,18 @@ class PlayerStoreFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fullname' => 'bail|required|string|max:255|unique:players,fullname',
-            'number' => ['required','integer'],
-            'birth_date' => ['required','date'],
-            'team'=>'nullable|string|max:255',
-            'nationalCode'=>['required',new Nationalcode()],
-            'playerImage'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cardImage'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
+            'fullname' => 'required|string|min:3|max:255',
+            'national_code'=> ['required','unique:managers,national_code',new Nationalcode()],
+            'mobile'=>'required|string|digits:11',
+            'team_name'=>'required|string|min:3|max:255',
+            'password'=>'required|min:6|confirmed',
         ];
+    }
+
+    protected function passedValidation()
+    {
+
+        $this->merge(['password' => bcrypt($this->input('password'))]);
+
     }
 }

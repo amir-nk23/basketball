@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->string('ex_team')->nullable();
+            $table->string('team');
             $table->string('national_code');
             $table->unsignedInteger('number');
             $table->string('player_image');
+            $table->string('birth_date');
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('no action');
             $table->unsignedBigInteger('manager_id');
             $table->foreign('manager_id')->references('id')->on('managers')->onDelete('no action');
             $table->string('card_image')->nullable();

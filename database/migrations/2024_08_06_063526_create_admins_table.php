@@ -11,24 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('managers', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('fullname')->unique();
-            $table->string('national_code')->unique();
             $table->string('mobile');
-            $table->string('team_name');
             $table->string('password');
-            $table->unsignedBigInteger('admin_id')->nullable();
-            $table->foreign('admin_id')->references('id')->on('managers')->onDelete('no action');
             $table->timestamps();
         });
 
-        \App\Models\Manager::query()->create([
+        \App\Models\Admin::query()->create([
 
             'fullname'=>'امیرحسین',
-            'national_code'=>'4580458648',
             'mobile'=>'09395439774',
-            'team_name'=>'شاهین',
             'password'=>bcrypt('123456')
 
 
@@ -40,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('managers');
+        Schema::dropIfExists('admins');
     }
 };

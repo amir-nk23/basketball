@@ -226,6 +226,8 @@ return [
 		"accountـnumber" => "شماره حساب",
         "number"=>"شماره پیراهن",
         "nationalCode"=>'کد ملی',
-        "playerImage"=>'عکس بازیکن'
+        "playerImage"=>'عکس بازیکن',
+        "team_name"=>'اسم تیم',
+        "national_code"=>'کد ملی'
     ],
 ];

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Symfony\Component\String\b;
 
 class AuthController extends Controller
 {

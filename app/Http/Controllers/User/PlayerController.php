@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerStoreFormRequest;
 use App\Http\Requests\PlayerUpdateFormRequest;
 use App\Models\Player;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -18,31 +19,33 @@ class PlayerController extends Controller
     public function index()
     {
 
-        $players = Player::query()->select('id','fullname','ex_team','national_code','number','player_image','card_image',)->get();
+        $players = Player::query()->select('id','fullname','team','national_code','number','player_image','card_image','birth_date','role_id')->get();
+        $roles = Role::query()->get();
         $title = 'حذف بازیکن';
         $text = "ایا نسبت به حذف این بازیکن اطمینان دارید ؟";
         confirmDelete($title, $text);
-        return view('user.player',compact('players'));
+        return view('user.player',compact('players','roles'));
     }
 
     public function store(PlayerStoreFormRequest $request)
     {
 
         $playerImage = 'storage/'.Storage::disk('public')->put('players',$request->file('playerImage'));
-
         $request->cardImage ? $this->cardImage = 'storage/'.Storage::disk('public')->put('cards',$request->file('cardImage')) : $this->cardImage = null ;
-
         Player::query()->create([
 
             'fullname'=>$request->fullname,
-            'ex_team'=>$request->exTeam,
+            'team'=>$request->team,
             'national_code'=>$request->nationalCode,
+            'birth_date' => $request->birth_date,
             'number'=>$request->number,
             'player_image'=>$playerImage,
             'card_image'=>$this->cardImage,
+            'role_id' => $request->role_id,
             'manager_id'=>Auth::id(),
 
         ]);
+
 
         Alert::success('بازیکن ثبت شد');
 
@@ -68,11 +71,14 @@ class PlayerController extends Controller
 
         }
 
+
         $player->update([
 
             'fullname'=>$request->fullname,
-            'ex_team'=>$request->exTeam,
+            'team'=>$request->team,
             'national_code'=>$request->nationalCode,
+            'birth_date' => $request->birth_date,
+            'role_id'=>$request->role_id,
             'number'=>$request->number,
             'player_image'=>$playerImage,
             'card_image'=>$cardImage,
